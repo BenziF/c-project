@@ -14,8 +14,9 @@ int main(void)
 	// Setup
 	// Set port A to out
 	// Set port B to in 
-	// Set up sequence
-	// Set up current sequence length
+	// Set up array of int: sequence
+	// Set up int: full sequence length
+	// Set up int: current sequence length
 	
     while (1)
     {
@@ -28,6 +29,7 @@ int main(void)
 	
 	// showSequenceState()
 		// Blink the current sequence
+		// return 0
 		
 		
 		
@@ -37,7 +39,7 @@ int main(void)
 		// Compare each pres to current sequence value
 			// If incorrect
 				// call showFailPattern()
-				// reset game
+				// call resetGame()
 				// return "wrong"
 		// call showCorrectPattern()
 		// return 0
@@ -47,20 +49,26 @@ int main(void)
 	// chechIfGameWon()
 		// If full sequence has been shown
 			// call showWinPatternForever()
-	
+		// return 0
 	
 	
 	// showFailPattern()
-		// resetGame()
+		// return 0
 	
 	
 	
 	// showCorrectPattern()
-	
+		// return 0
 	
 	
 	
 	// showWinPatternForever()
+		// while(1) aka do forever
+	
+	
+	
+	// resetGame()
+		// return 0
 	
 }
 
