@@ -5,21 +5,72 @@
 #include <avr/io.h>
 #include <stdio.h>
 #include <avr/interrupt.h>
+#include <stdint.h>
+#include <util/delay.h>
 #include "atmega2560_drivers.h"
 #include "minunit.h"
+#include "IGame.h"
+
 
 
 int main(void)
 {
 	// Setup
-	// Set port A to out
-	// Set port B to in 
-	// Set up array of int: sequence
-	// Set up int: full sequence length
-	// Set up int: current sequence length
+		// Set port A to out
+		DDRA = 0xFF;
+		PORTA = 0xFF;
+		// Set port B to in 
+		DDRB = 0x00;
+		PORTB = 0x00;
+		// Set up array of int: sequence
+		int sequence [8] = {6, 2, 7, 4, 4, 8, 1, 2};
+		// Set up int: full sequence length
+		int sequence_lenght = sizeof(sequence);
+		// Set up int: current sequence length
+		int current_sequence_lenght;
 	
     while (1)
     {
+		int i;
+		for (i=0; i<8; i ++)
+		{
+			switch(sequence[i]){
+				case 1 : PORTA ^= (1 << 0);
+				_delay_ms(1000);
+				PORTA ^= (1 << 0);
+				break;
+				case 2 : PORTA ^= (1 << 1);
+				_delay_ms(1000);
+				PORTA ^= (1 << 1);
+				break;
+				case 3 : PORTA ^= (1 << 2);
+				_delay_ms(1000);
+				PORTA ^= (1 << 2);
+				break;
+				case 4 : PORTA ^= (1 << 3);
+				_delay_ms(1000);
+				PORTA ^= (1 << 3);
+				break;
+				case 5 : PORTA ^= (1 << 4);
+				_delay_ms(1000);
+				 PORTA ^= (1 << 4);
+				break;
+				case 6 : PORTA ^= (1 << 5);
+				_delay_ms(1000);
+				 PORTA ^= (1 << 5);
+				break;
+				case 7 : PORTA ^= (1 << 6);
+				_delay_ms(1000);
+				PORTA ^= (1 << 6);
+				break;
+				case 8 : PORTA ^= (1 << 7);
+				_delay_ms(1000);
+				PORTA ^= (1 << 7);
+				break;
+				
+			}
+		
+		}
 		// call showSequenceState()
 		// call getPlayerInputState()
 		// call chechIfGameWon()
@@ -70,5 +121,5 @@ int main(void)
 	// resetGame()
 		// return 0
 	
-}
 
+		}
