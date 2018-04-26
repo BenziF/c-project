@@ -3,13 +3,24 @@
  */
 #include "IGame.h"
 
+int ifGameWonShowWinForever(int sequence_length, int current_sequence_length)
+{
+	if (sequence_length == current_sequence_length)
+	{
+		while(1)
+		{
+			showWinPattern();
+		}
+	}
+	return 0;
+}
 	
-int getPlayerInputState(int sequence[8], int *current_sequence_lenght)
+int getPlayerInputState(int sequence[8], int *current_sequence_length)
 {
 	int buttonPressed;
 	int i;
 	int playerWrong = 0;
-	for (i = 0; i < *current_sequence_lenght; i++)
+	for (i = 0; i < *current_sequence_length; i++)
 	{
 		_delay_ms(1000);
 		buttonPressed = getButtonPress();
@@ -24,7 +35,7 @@ int getPlayerInputState(int sequence[8], int *current_sequence_lenght)
 	if (playerWrong == 1)
 	{
 		showFailPattern();
-		resetGame(current_sequence_lenght);
+		resetGame(current_sequence_length);
 		return 1;
 	}
 	showWinPattern();
@@ -33,19 +44,19 @@ int getPlayerInputState(int sequence[8], int *current_sequence_lenght)
 	
 	
 	
-int resetGame(int *current_sequence_lenght)
+int resetGame(int *current_sequence_length)
 {
-	*current_sequence_lenght = 1;
+	*current_sequence_length = 1;
 	return 0;
 }
 	
 	
 	
-int showSequenceState(int sequence[8], int current_sequence_lenght)
+int showSequenceState(int sequence[8], int current_sequence_length)
 {
 	// Blink the current sequence
 	int i;
-	for (i = 0; i < current_sequence_lenght; i++)
+	for (i = 0; i < current_sequence_length; i++)
 	{
 		PORTA ^= (1 << (sequence [i] - 1));
 		_delay_ms(10000);
