@@ -10,7 +10,7 @@ int handleResultOfRound(int gameRoundResult, int sequence_length, int *current_s
 		showWinPattern();
 		*current_sequence_length = *current_sequence_length + 1;
 		// Check if game is finished
-		if (sequence_length == *current_sequence_length)
+		if (sequence_length-1 == *current_sequence_length)
 		{
 			showWinForever();
 		}
@@ -19,7 +19,8 @@ int handleResultOfRound(int gameRoundResult, int sequence_length, int *current_s
 	{
 		showFailPattern();
 		resetGame(current_sequence_length);
-	} else 
+	}
+	return 0; 
 
 }
 
@@ -32,7 +33,7 @@ int showWinForever()
 	return 0;
 }
 	
-int getPlayerInputState(int sequence[8], int *current_sequence_length)
+int getPlayerInputState(int sequence[2], int *current_sequence_length)
 {
 	int buttonPressed;
 	int i;
@@ -66,7 +67,7 @@ int resetGame(int *current_sequence_length)
 	
 	
 	
-int showSequenceState(int sequence[8], int current_sequence_length)
+int showSequenceState(int sequence[2], int current_sequence_length)
 {
 	// Blink the current sequence
 	int i;

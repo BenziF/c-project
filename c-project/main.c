@@ -30,7 +30,7 @@ int main(void)
 		
 	// Set up array of int: sequence
 	//int sequence [8] = {6, 2, 7, 4, 4, 8, 1, 2};
-	int sequence [8] = {6, 2};
+	int sequence [2] = {6, 2};
 	// Set up int: full sequence length
 	int sequence_length = sizeof(sequence);
 	// Set up int: current sequence length
