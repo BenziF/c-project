@@ -12,9 +12,10 @@ int getPlayerInputState(int sequence[8], int current_sequence_lenght)
 	for (i = 0; i < current_sequence_lenght; i++)
 	{
 		buttonPressed = getButtonPress();
+		printf("%d\t",buttonPressed);}
 		// Compare each pres to current sequence value
 		// If incorrect
-		if (buttonPressed != sequence[i])
+		/*if (buttonPressed != sequence[i])
 		{
 			playerWrong = 1;
 			break;
@@ -26,7 +27,7 @@ int getPlayerInputState(int sequence[8], int current_sequence_lenght)
 		resetGame(&current_sequence_lenght);
 		return 1;
 	}
-	showWinPattern();
+	showWinPattern();*/
 	return 0;
 }
 	
