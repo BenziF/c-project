@@ -61,73 +61,78 @@ int getButtonPress()
 	{
 		uint8_t port_b_state = ~PINB;
 		uint8_t port_b_validated;
+		int result = 9;
 
 		switch (port_b_state)
 		{
 			case (1<<PB0):
-			_delay_ms(1000);
-			port_b_validated = ~PINB;
-			if (port_b_validated == port_b_state)
-			{
-				return 0;
-			}
-			break;
+				_delay_ms(1000);
+				port_b_validated = ~PINB;
+				if (port_b_validated == port_b_state)
+				{
+					result = 0;
+				}
+				break;
 			case (1<<PB1):
-			_delay_ms(1000);
-			port_b_validated = ~PINB;
-			if (port_b_validated == port_b_state)
-			{
-				return 1;
-			}
-			break;
+				_delay_ms(1000);
+				port_b_validated = ~PINB;
+				if (port_b_validated == port_b_state)
+				{
+					result = 1;
+				}
+				break;
 			case (1<<PB2):
-			_delay_ms(1000);
-			port_b_validated = ~PINB;
-			if (port_b_validated == port_b_state)
-			{
-				return 2;
-			}
-			break;
+				_delay_ms(1000);
+				port_b_validated = ~PINB;
+				if (port_b_validated == port_b_state)
+				{
+					result = 2;
+				}
+				break;
 			case (1<<PB3):
-			_delay_ms(1000);
-			port_b_validated = ~PINB;
-			if (port_b_validated == port_b_state)
-			{
-				return 3;
-			}
-			break;
+				_delay_ms(1000);
+				port_b_validated = ~PINB;
+				if (port_b_validated == port_b_state)
+				{
+					result = 3;
+				}
+				break;
 			case (1<<PB4):
-			_delay_ms(1000);
-			port_b_validated = ~PINB;
-			if (port_b_validated == port_b_state)
-			{
-				return 4;
-			}
-			break;
+				_delay_ms(1000);
+				port_b_validated = ~PINB;
+				if (port_b_validated == port_b_state)
+				{
+					result = 4;
+				}
+				break;
 			case (1<<PB5):
-			_delay_ms(1000);
-			port_b_validated = ~PINB;
-			if (port_b_validated == port_b_state)
-			{
-				return 5;
-			}
-			break;
+				_delay_ms(1000);
+				port_b_validated = ~PINB;
+				if (port_b_validated == port_b_state)
+				{
+					result = 5;
+				}
+				break;
 			case (1<<PB6):
-			_delay_ms(1000);
-			port_b_validated = ~PINB;
-			if (port_b_validated == port_b_state)
-			{
-				return 6;
-			}
-			break;
+				_delay_ms(1000);
+				port_b_validated = ~PINB;
+				if (port_b_validated == port_b_state)
+				{
+					result = 6;
+				}
+				break;
 			case (1<<PB7):
-			_delay_ms(1000);
-			port_b_validated = ~PINB;
-			if (port_b_validated == port_b_state)
-			{
-				return 7;
-			}
-			break;
+				_delay_ms(1000);
+				port_b_validated = ~PINB;
+				if (port_b_validated == port_b_state)
+				{
+					result = 7;
+				}
+				break;
+		}
+		if (result != 9)
+		{
+			return result;
 		}
 	}
 }
