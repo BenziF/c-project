@@ -122,3 +122,21 @@ int showFailPattern()
 
 	return 0;
 }
+
+int showWinPattern()
+{
+	_delay_ms(2000);
+	PORTA = 0b01010101;
+	_delay_ms(2000);
+	PORTA = ~PORTA;
+	_delay_ms(2000);
+	PORTA = ~PORTA;
+	_delay_ms(2000);
+	PORTA = ~PORTA;
+	_delay_ms(2000);
+	PORTA = ~PORTA;
+	_delay_ms(2000);
+	PORTA = ~PORTA;
+
+	return 0;
+}
