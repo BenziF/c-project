@@ -56,6 +56,18 @@
     </com_atmel_avrdbg_tool_stk600>
     <avrtoolinterface>ISP</avrtoolinterface>
     <avrtoolinterfaceclock>125000</avrtoolinterfaceclock>
+    <com_atmel_avrdbg_tool_simulator>
+      <ToolOptions xmlns="">
+        <InterfaceProperties>
+        </InterfaceProperties>
+        <InterfaceName>
+        </InterfaceName>
+      </ToolOptions>
+      <ToolType xmlns="">com.atmel.avrdbg.tool.simulator</ToolType>
+      <ToolNumber xmlns="">
+      </ToolNumber>
+      <ToolName xmlns="">Simulator</ToolName>
+    </com_atmel_avrdbg_tool_simulator>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -86,8 +98,14 @@
         <avrgcc.linker.libraries.Libraries>
           <ListValues>
             <Value>libm</Value>
+            <Value>libatmega2560_drivers.a</Value>
           </ListValues>
         </avrgcc.linker.libraries.Libraries>
+        <avrgcc.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>C:\Users\Utente\Documents\GitHub\c-project\c-project</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.LibrarySearchPaths>
         <avrgcc.assembler.general.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.150\include</Value>
@@ -126,8 +144,14 @@
         <avrgcc.linker.libraries.Libraries>
           <ListValues>
             <Value>libm</Value>
+            <Value>libatmega2560_drivers.a</Value>
           </ListValues>
         </avrgcc.linker.libraries.Libraries>
+        <avrgcc.linker.libraries.LibrarySearchPaths>
+          <ListValues>
+            <Value>C:\Users\Utente\Documents\GitHub\c-project\c-project</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.LibrarySearchPaths>
         <avrgcc.assembler.general.IncludePaths>
           <ListValues>
             <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.2.150\include</Value>
@@ -138,6 +162,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="atmega2560_drivers.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Game.c">
       <SubType>compile</SubType>
     </Compile>

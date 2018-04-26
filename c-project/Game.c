@@ -4,18 +4,18 @@
 #include "IGame.h"
 
 	
-int getPlayerInputState(int sequence[8], int current_sequence_lenght)
+int getPlayerInputState(int sequence[8], int *current_sequence_lenght)
 {
 	int buttonPressed;
 	int i;
 	int playerWrong = 0;
-	for (i = 0; i < current_sequence_lenght; i++)
+	for (i = 0; i < *current_sequence_lenght; i++)
 	{
+		_delay_ms(1000);
 		buttonPressed = getButtonPress();
-		printf("%d\t",buttonPressed);}
 		// Compare each pres to current sequence value
 		// If incorrect
-		/*if (buttonPressed != sequence[i])
+		if (buttonPressed + 1 != sequence[i])
 		{
 			playerWrong = 1;
 			break;
@@ -24,10 +24,10 @@ int getPlayerInputState(int sequence[8], int current_sequence_lenght)
 	if (playerWrong == 1)
 	{
 		showFailPattern();
-		resetGame(&current_sequence_lenght);
+		resetGame(current_sequence_lenght);
 		return 1;
 	}
-	showWinPattern();*/
+	showWinPattern();
 	return 0;
 }
 	
@@ -35,7 +35,7 @@ int getPlayerInputState(int sequence[8], int current_sequence_lenght)
 	
 int resetGame(int *current_sequence_lenght)
 {
-	*current_sequence_lenght = 0;
+	*current_sequence_lenght = 1;
 	return 0;
 }
 	
@@ -133,6 +133,12 @@ int getButtonPress()
 		}
 		if (result != 9)
 		{
+			port_b_state = ~PINB;
+			while (port_b_state != 0b00000000)
+			{
+				port_b_state = ~PINB;
+				_delay_ms(100);
+			}
 			return result;
 		}
 	}
@@ -151,7 +157,8 @@ int showFailPattern()
 	_delay_ms(2000);
 	PORTA = ~PORTA;
 	_delay_ms(2000);
-	PORTA = ~PORTA;
+	PORTA = 0xFF;
+	_delay_ms(2000);
 
 	return 0;
 }
@@ -169,7 +176,8 @@ int showWinPattern()
 	_delay_ms(2000);
 	PORTA = ~PORTA;
 	_delay_ms(2000);
-	PORTA = ~PORTA;
+	PORTA = 0xFF;
+	_delay_ms(2000);
 
 	return 0;
 }
