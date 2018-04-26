@@ -4,6 +4,34 @@
 #include "IGame.h"
 
 	
+int getPlayerInputState(int sequence[8], int current_sequence_lenght)
+{
+	int buttonPressed;
+	int i;
+	int playerWrong = 0;
+	for (i = 0; i < current_sequence_lenght; i++)
+	{
+		buttonPressed = getButtonPress();
+		// Compare each pres to current sequence value
+		// If incorrect
+		if (buttonPressed != sequence[i])
+		{
+			playerWrong = 1;
+			break;
+		}
+	}
+	if (playerWrong == 1)
+	{
+		showFailPattern();
+		resetGame(&current_sequence_lenght);
+		return 1;
+	}
+	showWinPattern();
+	return 0;
+}
+	
+	
+	
 int resetGame(int *current_sequence_lenght)
 {
 	*current_sequence_lenght = 0;
@@ -18,7 +46,7 @@ int showSequenceState(int sequence[8], int current_sequence_lenght)
 	int i;
 	for (i = 0; i < current_sequence_lenght; i++)
 	{
-		PORTA ^= (1 << sequence [i] - 1);
+		PORTA ^= (1 << (sequence [i] - 1));
 		_delay_ms(10000);
 		PORTA = 0xFF;
 		_delay_ms(2000);
@@ -36,9 +64,8 @@ int getButtonPress()
 
 		switch (port_b_state)
 		{
-
 			case (1<<PB0):
-			_delay_ms(100);
+			_delay_ms(1000);
 			port_b_validated = ~PINB;
 			if (port_b_validated == port_b_state)
 			{
@@ -46,7 +73,7 @@ int getButtonPress()
 			}
 			break;
 			case (1<<PB1):
-			_delay_ms(100);
+			_delay_ms(1000);
 			port_b_validated = ~PINB;
 			if (port_b_validated == port_b_state)
 			{
@@ -54,7 +81,7 @@ int getButtonPress()
 			}
 			break;
 			case (1<<PB2):
-			_delay_ms(100);
+			_delay_ms(1000);
 			port_b_validated = ~PINB;
 			if (port_b_validated == port_b_state)
 			{
@@ -62,7 +89,7 @@ int getButtonPress()
 			}
 			break;
 			case (1<<PB3):
-			_delay_ms(100);
+			_delay_ms(1000);
 			port_b_validated = ~PINB;
 			if (port_b_validated == port_b_state)
 			{
@@ -70,7 +97,7 @@ int getButtonPress()
 			}
 			break;
 			case (1<<PB4):
-			_delay_ms(100);
+			_delay_ms(1000);
 			port_b_validated = ~PINB;
 			if (port_b_validated == port_b_state)
 			{
@@ -78,7 +105,7 @@ int getButtonPress()
 			}
 			break;
 			case (1<<PB5):
-			_delay_ms(100);
+			_delay_ms(1000);
 			port_b_validated = ~PINB;
 			if (port_b_validated == port_b_state)
 			{
@@ -86,7 +113,7 @@ int getButtonPress()
 			}
 			break;
 			case (1<<PB6):
-			_delay_ms(100);
+			_delay_ms(1000);
 			port_b_validated = ~PINB;
 			if (port_b_validated == port_b_state)
 			{
@@ -94,7 +121,7 @@ int getButtonPress()
 			}
 			break;
 			case (1<<PB7):
-			_delay_ms(100);
+			_delay_ms(1000);
 			port_b_validated = ~PINB;
 			if (port_b_validated == port_b_state)
 			{
