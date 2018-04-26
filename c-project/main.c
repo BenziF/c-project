@@ -13,6 +13,10 @@
 
 
 
+// Set up int: current sequence length
+int current_sequence_lenght;
+
+
 int main(void)
 {
 	// Setup
@@ -26,74 +30,135 @@ int main(void)
 		int sequence [8] = {6, 2, 7, 4, 4, 8, 1, 2};
 		// Set up int: full sequence length
 		int sequence_lenght = sizeof(sequence);
-		// Set up int: current sequence length
-		int current_sequence_lenght;
+
 	
     while (1)
     {
-		int i;
-		for (i=0; i<8; i ++)
-		{
-			switch(sequence[i]){
-				case 1 : PORTA ^= (1 << 0);
-				_delay_ms(1000);
-				PORTA ^= (1 << 0);
-				break;
-				case 2 : PORTA ^= (1 << 1);
-				_delay_ms(1000);
-				PORTA ^= (1 << 1);
-				break;
-				case 3 : PORTA ^= (1 << 2);
-				_delay_ms(1000);
-				PORTA ^= (1 << 2);
-				break;
-				case 4 : PORTA ^= (1 << 3);
-				_delay_ms(1000);
-				PORTA ^= (1 << 3);
-				break;
-				case 5 : PORTA ^= (1 << 4);
-				_delay_ms(1000);
-				 PORTA ^= (1 << 4);
-				break;
-				case 6 : PORTA ^= (1 << 5);
-				_delay_ms(1000);
-				 PORTA ^= (1 << 5);
-				break;
-				case 7 : PORTA ^= (1 << 6);
-				_delay_ms(1000);
-				PORTA ^= (1 << 6);
-				break;
-				case 8 : PORTA ^= (1 << 7);
-				_delay_ms(1000);
-				PORTA ^= (1 << 7);
-				break;
-				
-			}
-		
-		}
+
 		// call showSequenceState()
+		showSequenceState()
 		// call getPlayerInputState()
 		// call chechIfGameWon()
     }
 	
 	
 	
-	// showSequenceState()
+	int showSequenceState()
+	{
 		// Blink the current sequence
-		// return 0
+		int i;
+		for (i = 0; i < current_sequence_lenght; i++)
+		{
+			PORTA ^= (1 << sequence [i]);
+			_delay_ms(1000);
+			PORTA = 0xFF;
+			_delay_ms(100);
+		}
+		return 0
+	}
+	
+	
+	
+	int getButtonPress()
+	{
+		while (1)
+		{
+			uint8_t port_b_state = ~PINB;
+			uint8_t port_b_validated;
+
+			switch (port_b_state)
+			{
+
+				case (1<<PB0):
+					_delay_ms(100);
+					port_b_validated = ~PINB;
+					if (port_b_validated == port_b_state)
+					{
+						return 0;
+					}
+					break;
+				case (1<<PB1):
+					_delay_ms(100);
+					port_b_validated = ~PINB;
+					if (port_b_validated == port_b_state)
+					{
+						return 1;
+					}
+					break;
+				case (1<<PB2):
+					_delay_ms(100);
+					port_b_validated = ~PINB;
+					if (port_b_validated == port_b_state)
+					{
+						return 2;
+					}
+					break;
+				case (1<<PB3):
+					_delay_ms(100);
+					port_b_validated = ~PINB;
+					if (port_b_validated == port_b_state)
+					{
+						return 3;
+					}
+					break;
+				case (1<<PB4):
+					_delay_ms(100);
+					port_b_validated = ~PINB;
+					if (port_b_validated == port_b_state)
+					{
+						return 4;
+					}
+					break;
+				case (1<<PB5):
+					_delay_ms(100);
+					port_b_validated = ~PINB;
+					if (port_b_validated == port_b_state)
+					{
+						return 5;
+					}
+					break;
+				case (1<<PB6):
+					_delay_ms(100);
+					port_b_validated = ~PINB;
+					if (port_b_validated == port_b_state)
+					{
+						return 6;
+					}
+					break;
+				case (1<<PB7):
+					_delay_ms(100);
+					port_b_validated = ~PINB;
+					if (port_b_validated == port_b_state)
+					{
+						return 7;
+					}
+					break;
+			}
+		}	
+	}
 		
 		
 		
 	
-	// getPlayerInputState()
-		// Get button press
-		// Compare each pres to current sequence value
+	int getPlayerInputState()
+	{
+		int buttonPressed;
+		int i;
+		for (i = 0; i < current_sequence_lenght; i++)
+		{
+			buttonPressed = getButtonPress();
+			// Compare each pres to current sequence value
 			// If incorrect
+			if (buttonPressed != sequence[i])
+			{
 				// call showFailPattern()
 				// call resetGame()
 				// return "wrong"
-		// call showCorrectPattern()
-		// return 0
+			}
+			// call showCorrectPattern()
+		}
+		return 0;	
+	}
 				
 	
 	
