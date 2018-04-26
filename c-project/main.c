@@ -2,6 +2,8 @@
  * c-project.c
  */ 
 
+# define F_CPU 1000000UL
+
 #include <avr/io.h>
 #include <stdio.h>
 #include <avr/interrupt.h>
@@ -73,18 +75,12 @@ int main(void)
 	}
 				
 	
-	
 	// chechIfGameWon()
 		// If full sequence has been shown
 			// call showWinPatternForever()
 		// return 0
 	
-	
-	// showFailPattern()
-		// return 0
-	
-	
-	
+
 	// showCorrectPattern()
 		// return 0
 	
@@ -94,9 +90,6 @@ int main(void)
 		// while(1) aka do forever
 	
 	
-	
-	// resetGame()
-		// return 0
 	
 
 
