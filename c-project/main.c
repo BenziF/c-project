@@ -13,6 +13,10 @@
 
 
 
+// Set up array of int: sequence
+int sequence [8] = {6, 2, 7, 4, 4, 8, 1, 2};
+// Set up int: full sequence length
+int sequence_lenght = sizeof(sequence);
 // Set up int: current sequence length
 int current_sequence_lenght;
 
@@ -26,12 +30,7 @@ int main(void)
 		// Set port B to in 
 		DDRB = 0x00;
 		PORTB = 0x00;
-		// Set up array of int: sequence
-		int sequence [8] = {6, 2, 7, 4, 4, 8, 1, 2};
-		// Set up int: full sequence length
-		int sequence_lenght = sizeof(sequence);
 
-	
     while (1)
     {
 
@@ -40,6 +39,7 @@ int main(void)
 		// call getPlayerInputState()
 		// call chechIfGameWon()
     }
+}
 	
 	
 	
