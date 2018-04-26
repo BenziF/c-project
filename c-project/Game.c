@@ -39,7 +39,7 @@ int getPlayerInputState(int sequence[8], int *current_sequence_length)
 		return 1;
 	}
 	showWinPattern();
-	*current_sequence_length++;
+	*current_sequence_length= *current_sequence_length + 1;
 	return 0;
 }
 	
