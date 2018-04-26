@@ -18,6 +18,7 @@
 int resetGame(int *current_sequence_lenght);
 int showSequenceState();
 int getButtonPress();
+int showFailPattern();
 
 
 

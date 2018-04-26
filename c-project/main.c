@@ -35,7 +35,8 @@ int main(void)
     {
 
 		// call showSequenceState()
-		showSequenceState();
+		//showSequenceState();
+		showFailPattern();
 		// call getPlayerInputState()
 		// call chechIfGameWon()
     }
@@ -101,4 +102,4 @@ int main(void)
 		// return 0
 	
 
-		}
+

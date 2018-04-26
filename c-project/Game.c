@@ -12,7 +12,7 @@ int resetGame(int *current_sequence_lenght)
 	
 	
 	
-int showSequenceState()
+int showSequenceState(int sequence[8], int current_sequence_lenght)
 {
 	// Blink the current sequence
 	int i;
@@ -27,80 +27,98 @@ int showSequenceState()
 }
 
 
-	int getButtonPress()
+int getButtonPress()
+{
+	while (1)
 	{
-		while (1)
+		uint8_t port_b_state = ~PINB;
+		uint8_t port_b_validated;
+
+		switch (port_b_state)
 		{
-			uint8_t port_b_state = ~PINB;
-			uint8_t port_b_validated;
 
-			switch (port_b_state)
+			case (1<<PB0):
+			_delay_ms(100);
+			port_b_validated = ~PINB;
+			if (port_b_validated == port_b_state)
 			{
-
-				case (1<<PB0):
-				_delay_ms(100);
-				port_b_validated = ~PINB;
-				if (port_b_validated == port_b_state)
-				{
-					return 0;
-				}
-				break;
-				case (1<<PB1):
-				_delay_ms(100);
-				port_b_validated = ~PINB;
-				if (port_b_validated == port_b_state)
-				{
-					return 1;
-				}
-				break;
-				case (1<<PB2):
-				_delay_ms(100);
-				port_b_validated = ~PINB;
-				if (port_b_validated == port_b_state)
-				{
-					return 2;
-				}
-				break;
-				case (1<<PB3):
-				_delay_ms(100);
-				port_b_validated = ~PINB;
-				if (port_b_validated == port_b_state)
-				{
-					return 3;
-				}
-				break;
-				case (1<<PB4):
-				_delay_ms(100);
-				port_b_validated = ~PINB;
-				if (port_b_validated == port_b_state)
-				{
-					return 4;
-				}
-				break;
-				case (1<<PB5):
-				_delay_ms(100);
-				port_b_validated = ~PINB;
-				if (port_b_validated == port_b_state)
-				{
-					return 5;
-				}
-				break;
-				case (1<<PB6):
-				_delay_ms(100);
-				port_b_validated = ~PINB;
-				if (port_b_validated == port_b_state)
-				{
-					return 6;
-				}
-				break;
-				case (1<<PB7):
-				_delay_ms(100);
-				port_b_validated = ~PINB;
-				if (port_b_validated == port_b_state)
-				{
-					return 7;
-				}
-				break;
+				return 0;
 			}
+			break;
+			case (1<<PB1):
+			_delay_ms(100);
+			port_b_validated = ~PINB;
+			if (port_b_validated == port_b_state)
+			{
+				return 1;
+			}
+			break;
+			case (1<<PB2):
+			_delay_ms(100);
+			port_b_validated = ~PINB;
+			if (port_b_validated == port_b_state)
+			{
+				return 2;
+			}
+			break;
+			case (1<<PB3):
+			_delay_ms(100);
+			port_b_validated = ~PINB;
+			if (port_b_validated == port_b_state)
+			{
+				return 3;
+			}
+			break;
+			case (1<<PB4):
+			_delay_ms(100);
+			port_b_validated = ~PINB;
+			if (port_b_validated == port_b_state)
+			{
+				return 4;
+			}
+			break;
+			case (1<<PB5):
+			_delay_ms(100);
+			port_b_validated = ~PINB;
+			if (port_b_validated == port_b_state)
+			{
+				return 5;
+			}
+			break;
+			case (1<<PB6):
+			_delay_ms(100);
+			port_b_validated = ~PINB;
+			if (port_b_validated == port_b_state)
+			{
+				return 6;
+			}
+			break;
+			case (1<<PB7):
+			_delay_ms(100);
+			port_b_validated = ~PINB;
+			if (port_b_validated == port_b_state)
+			{
+				return 7;
+			}
+			break;
 		}
 	}
+}
+
+int showFailPattern()
+{
+	_delay_ms(500);
+	PORTA = 0b00011000;
+	_delay_ms(500);
+	PORTA = ~PORTA;
+	_delay_ms(500);
+	PORTA = ~PORTA;
+	_delay_ms(500);
+	PORTA = ~PORTA;
+	_delay_ms(500);
+	PORTA = ~PORTA;
+	_delay_ms(500);
+	PORTA = ~PORTA;
+
+	return 0;
+}
