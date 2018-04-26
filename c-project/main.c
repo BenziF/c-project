@@ -35,9 +35,10 @@ int main(void)
 
     while (1)
     {
-		showSequenceState(sequence, current_sequence_lenght);
+		//showSequenceState(sequence, current_sequence_lenght);
 		// call getPlayerInputState()
 		// call chechIfGameWon()
+		showWinPattern();
     }
 }
 	

@@ -19,7 +19,7 @@ int resetGame(int *current_sequence_lenght);
 int showSequenceState(int sequence[8], int current_sequence_lenght);
 int getButtonPress();
 int showFailPattern();
-int showWinPattern()
+int showWinPattern();
 
 
 
