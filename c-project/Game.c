@@ -5,25 +5,26 @@
 
 int handleResultOfRound(int gameRoundResult, int sequence_length, int *current_sequence_length)
 {
+	// 0 if player NOT incorrect
 	if (gameRoundResult == 0)
 	{
 		showWinPattern();
 		*current_sequence_length = *current_sequence_length + 1;
 		// Check if game is finished
-		if (sequence_length-1 == *current_sequence_length)
+		if ((sequence_length - 1) == *current_sequence_length)
 		{
 			showWinForever();
 		}
-		PORTA = 0xFF;
-		_delay_ms(2000);
 	} 
+	// 1 if player was incorrect
 	else if (gameRoundResult == 1)
 	{
 		showFailPattern();
 		resetGame(current_sequence_length);
 	}
+	PORTA = 0xFF;
+	_delay_ms(2000);
 	return 0; 
-
 }
 
 int showWinForever()
@@ -38,8 +39,8 @@ int showWinForever()
 int getPlayerInputState(int sequence[2], int *current_sequence_length)
 {
 	int buttonPressed;
+	int intputResult = 0;
 	int i;
-	int playerWrong = 0;
 	for (i = 0; i < *current_sequence_length; i++)
 	{
 		_delay_ms(1000);
@@ -48,15 +49,11 @@ int getPlayerInputState(int sequence[2], int *current_sequence_length)
 		// If incorrect
 		if (buttonPressed + 1 != sequence[i])
 		{
-			playerWrong = 1;
+			intputResult = 1;
 			break;
 		}
 	}
-	if (playerWrong == 1)
-	{
-		return 1;
-	}
-	return 0;
+	return intputResult;
 }
 	
 	
@@ -185,8 +182,7 @@ int showFailPattern()
 	_delay_ms(2000);
 	PORTA = ~PORTA;
 	_delay_ms(2000);
-	PORTA = 0xFF;
-	_delay_ms(2000);
+	PORTA = ~PORTA;
 
 	return 0;
 }
