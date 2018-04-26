@@ -38,7 +38,8 @@ int getPlayerInputState(int sequence[8], int *current_sequence_length)
 		resetGame(current_sequence_length);
 		return 1;
 	}
-	showWinPattern(current_sequence_length);
+	showWinPattern();
+	*current_sequence_length++;
 	return 0;
 }
 	
@@ -174,7 +175,7 @@ int showFailPattern()
 	return 0;
 }
 
-int showWinPattern(int *current_sequence_length)
+int showWinPattern()
 {
 	_delay_ms(2000);
 	PORTA = 0b01010101;
@@ -190,7 +191,5 @@ int showWinPattern(int *current_sequence_length)
 	PORTA = 0xFF;
 	_delay_ms(2000);
 
-	*current_sequence_length++;
-	
 	return 0;
 }

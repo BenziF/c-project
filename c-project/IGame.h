@@ -19,6 +19,6 @@ int resetGame(int *current_sequence_length);
 int showSequenceState(int sequence[8], int current_sequence_length);
 int getButtonPress();
 int showFailPattern();
-int showWinPattern(int *current_sequence_length);
+int showWinPattern();
 
 #endif /* IGAME_H_ */
