@@ -35,107 +35,21 @@ int main(void)
     {
 
 		// call showSequenceState()
-		showSequenceState()
+		showSequenceState();
 		// call getPlayerInputState()
 		// call chechIfGameWon()
     }
 }
 	
-	
-	
-	int showSequenceState()
-	{
-		// Blink the current sequence
-		int i;
-		for (i = 0; i < current_sequence_lenght; i++)
-		{
-			PORTA ^= (1 << sequence [i]);
-			_delay_ms(1000);
-			PORTA = 0xFF;
-			_delay_ms(100);
-		}
-		return 0
-	}
-	
-	
-	
-	int getButtonPress()
-	{
-		while (1)
-		{
-			uint8_t port_b_state = ~PINB;
-			uint8_t port_b_validated;
 
-			switch (port_b_state)
-			{
+	
+	
+	
 
-				case (1<<PB0):
-					_delay_ms(100);
-					port_b_validated = ~PINB;
-					if (port_b_validated == port_b_state)
-					{
-						return 0;
-					}
-					break;
-				case (1<<PB1):
-					_delay_ms(100);
-					port_b_validated = ~PINB;
-					if (port_b_validated == port_b_state)
-					{
-						return 1;
-					}
-					break;
-				case (1<<PB2):
-					_delay_ms(100);
-					port_b_validated = ~PINB;
-					if (port_b_validated == port_b_state)
-					{
-						return 2;
-					}
-					break;
-				case (1<<PB3):
-					_delay_ms(100);
-					port_b_validated = ~PINB;
-					if (port_b_validated == port_b_state)
-					{
-						return 3;
-					}
-					break;
-				case (1<<PB4):
-					_delay_ms(100);
-					port_b_validated = ~PINB;
-					if (port_b_validated == port_b_state)
-					{
-						return 4;
-					}
-					break;
-				case (1<<PB5):
-					_delay_ms(100);
-					port_b_validated = ~PINB;
-					if (port_b_validated == port_b_state)
-					{
-						return 5;
-					}
-					break;
-				case (1<<PB6):
-					_delay_ms(100);
-					port_b_validated = ~PINB;
-					if (port_b_validated == port_b_state)
-					{
-						return 6;
-					}
-					break;
-				case (1<<PB7):
-					_delay_ms(100);
-					port_b_validated = ~PINB;
-					if (port_b_validated == port_b_state)
-					{
-						return 7;
-					}
-					break;
-			}
-		}	
-	}
+	
+	
+	
+	
 		
 		
 		
@@ -152,8 +66,8 @@ int main(void)
 			if (buttonPressed != sequence[i])
 			{
 				// call showFailPattern()
-				// call resetGame()
-				// return "wrong"
+				resetGame(&current_sequence_lenght);
+				return "wrong";
 			}
 			// call showCorrectPattern()
 		}
