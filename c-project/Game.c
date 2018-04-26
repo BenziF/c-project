@@ -14,6 +14,8 @@ int handleResultOfRound(int gameRoundResult, int sequence_length, int *current_s
 		{
 			showWinForever();
 		}
+		PORTA = 0xFF;
+		_delay_ms(2000);
 	} 
 	else if (gameRoundResult == 1)
 	{
@@ -191,7 +193,6 @@ int showFailPattern()
 
 int showWinPattern()
 {
-	_delay_ms(2000);
 	PORTA = 0b01010101;
 	_delay_ms(2000);
 	PORTA = ~PORTA;
@@ -202,7 +203,7 @@ int showWinPattern()
 	_delay_ms(2000);
 	PORTA = ~PORTA;
 	_delay_ms(2000);
-	PORTA = 0xFF;
+	PORTA = ~PORTA;
 	_delay_ms(2000);
 
 	return 0;
