@@ -29,15 +29,19 @@ int main(void)
 	sei();
 		
 	// Set up array of int: sequence
-	int sequence [8] = {6, 2, 7, 4, 4, 8, 1, 2};
+	//int sequence [8] = {6, 2, 7, 4, 4, 8, 1, 2};
+	int sequence [8] = {6, 2};
 	// Set up int: full sequence length
 	int sequence_length = sizeof(sequence);
 	// Set up int: current sequence length
 	int current_sequence_length = 1;
+	// Setup int: gameRoundResult. 0 = correct, 1 = player incorrect
+	int gameRoundResult = 0;
 
     while (1)
     {
 		showSequenceState(sequence, current_sequence_length);
-		getPlayerInputState(sequence, &current_sequence_length, sequence_length);
+		gameRoundResult = getPlayerInputState(sequence, &current_sequence_length);
+		handleResultOfRound(gameRoundResult, sequence_length, &current_sequence_length);
     }
 }
