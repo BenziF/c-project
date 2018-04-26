@@ -14,7 +14,7 @@
 #include "minunit.h"
 
 int ifGameWonShowWinForever(int sequence_length, int current_sequence_length);
-int getPlayerInputState(int sequence[8], int *current_sequence_length);
+int getPlayerInputState(int sequence[8], int *current_sequence_length, int sequence_length);
 int resetGame(int *current_sequence_length);
 int showSequenceState(int sequence[8], int current_sequence_length);
 int getButtonPress();

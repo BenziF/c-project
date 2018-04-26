@@ -3,9 +3,9 @@
  */
 #include "IGame.h"
 
-int ifGameWonShowWinForever(int sequence_length, int current_sequence_length)
+int ifGameWonShowWinForever(int sequence_length, int *current_sequence_length)
 {
-	if (sequence_length == current_sequence_length)
+	if (sequence_length == *current_sequence_length)
 	{
 		while(1)
 		{
@@ -15,7 +15,7 @@ int ifGameWonShowWinForever(int sequence_length, int current_sequence_length)
 	return 0;
 }
 	
-int getPlayerInputState(int sequence[8], int *current_sequence_length)
+int getPlayerInputState(int sequence[8], int *current_sequence_length, int sequence_length)
 {
 	int buttonPressed;
 	int i;
@@ -40,6 +40,7 @@ int getPlayerInputState(int sequence[8], int *current_sequence_length)
 	}
 	showWinPattern();
 	*current_sequence_length= *current_sequence_length + 1;
+	ifGameWonShowWinForever(sequence_length, current_sequence_length);
 	return 0;
 }
 	

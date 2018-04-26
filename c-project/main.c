@@ -33,12 +33,11 @@ int main(void)
 	// Set up int: full sequence length
 	int sequence_length = sizeof(sequence);
 	// Set up int: current sequence length
-	int current_sequence_length = 3;
+	int current_sequence_length = 1;
 
     while (1)
     {
 		showSequenceState(sequence, current_sequence_length);
-		getPlayerInputState(sequence, &current_sequence_length);
-		ifGameWonShowWinForever(sequence_length, current_sequence_length);
+		getPlayerInputState(sequence, &current_sequence_length, sequence_length);
     }
 }
