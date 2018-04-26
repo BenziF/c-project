@@ -18,7 +18,7 @@ int sequence [8] = {6, 2, 7, 4, 4, 8, 1, 2};
 // Set up int: full sequence length
 int sequence_lenght = sizeof(sequence);
 // Set up int: current sequence length
-int current_sequence_lenght;
+int current_sequence_lenght = 3;
 
 
 int main(void)
@@ -33,10 +33,7 @@ int main(void)
 
     while (1)
     {
-
-		// call showSequenceState()
-		//showSequenceState();
-		showFailPattern();
+		showSequenceState(sequence, current_sequence_lenght);
 		// call getPlayerInputState()
 		// call chechIfGameWon()
     }
@@ -66,9 +63,9 @@ int main(void)
 			// If incorrect
 			if (buttonPressed != sequence[i])
 			{
-				// call showFailPattern()
+				showFailPattern();
 				resetGame(&current_sequence_lenght);
-				return "wrong";
+				return 1;
 			}
 			// call showCorrectPattern()
 		}

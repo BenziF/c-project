@@ -18,10 +18,10 @@ int showSequenceState(int sequence[8], int current_sequence_lenght)
 	int i;
 	for (i = 0; i < current_sequence_lenght; i++)
 	{
-		PORTA ^= (1 << sequence [i]);
-		_delay_ms(1000);
+		PORTA ^= (1 << sequence [i] - 1);
+		_delay_ms(10000);
 		PORTA = 0xFF;
-		_delay_ms(100);
+		_delay_ms(2000);
 	}
 	return 0;
 }
@@ -107,17 +107,17 @@ int getButtonPress()
 
 int showFailPattern()
 {
-	_delay_ms(500);
+	_delay_ms(2000);
 	PORTA = 0b00011000;
-	_delay_ms(500);
+	_delay_ms(2000);
 	PORTA = ~PORTA;
-	_delay_ms(500);
+	_delay_ms(2000);
 	PORTA = ~PORTA;
-	_delay_ms(500);
+	_delay_ms(2000);
 	PORTA = ~PORTA;
-	_delay_ms(500);
+	_delay_ms(2000);
 	PORTA = ~PORTA;
-	_delay_ms(500);
+	_delay_ms(2000);
 	PORTA = ~PORTA;
 
 	return 0;
