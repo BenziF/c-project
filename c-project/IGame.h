@@ -14,7 +14,7 @@
 #include "atmega2560_drivers.h"
 #include "minunit.h"
 
-int getPlayerInputState(int *sequence[8], int current_sequence_lenght);
+int getPlayerInputState(int sequence[8], int current_sequence_lenght);
 int resetGame(int *current_sequence_lenght);
 int showSequenceState(int sequence[8], int current_sequence_lenght);
 int getButtonPress();

@@ -36,7 +36,7 @@ int main(void)
     while (1)
     {
 		showSequenceState(sequence, current_sequence_lenght);
-		getPlayerInputState(&sequence, current_sequence_lenght);
+		getPlayerInputState(sequence, current_sequence_lenght);
 		// call chechIfGameWon()
 		//showWinPattern();
     }
