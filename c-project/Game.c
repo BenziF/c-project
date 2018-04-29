@@ -42,7 +42,7 @@ int getPlayerInputState(int sequence[2], int *current_sequence_length)
 {
 	//Setup
 	int buttonPressed;
-	int intputResult = 0;
+	int inputResult = 0;
 	int i;
 	//Receive input from the player for as long as the current sequence lasts
 	for (i = 0; i < *current_sequence_length; i++)
@@ -53,11 +53,11 @@ int getPlayerInputState(int sequence[2], int *current_sequence_length)
 		// If incorrect
 		if (buttonPressed + 1 != sequence[i])
 		{
-			intputResult = 1;
+			inputResult = 1;
 			break;
 		}
 	}
-	return intputResult;
+	return inputResult;
 }
 	
 	
