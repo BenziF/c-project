@@ -64,7 +64,7 @@ int getPlayerInputState(int sequence[2], int *current_sequence_length)
 	
 int resetGame(int *current_sequence_length)
 {
-	//Restart the game, setting the sequence lenght back to 1
+	//Restart the game, setting the sequence length back to 1
 	*current_sequence_length = 1;
 	return 0;
 }
