@@ -22,6 +22,7 @@ int handleResultOfRound(int gameRoundResult, int sequence_length, int *current_s
 		showFailPattern();
 		resetGame(current_sequence_length);
 	}
+	//Reset for next round
 	PORTA = 0xFF;
 	_delay_ms(2000);
 	return 0; 
@@ -29,6 +30,7 @@ int handleResultOfRound(int gameRoundResult, int sequence_length, int *current_s
 
 int showWinForever()
 {
+	//If game finished, keep displaying win pattern
 	while(1)
 	{
 		showWinPattern();
@@ -38,9 +40,11 @@ int showWinForever()
 	
 int getPlayerInputState(int sequence[2], int *current_sequence_length)
 {
+	//Setup
 	int buttonPressed;
 	int intputResult = 0;
 	int i;
+	//Receive input from the player for as long as the current sequence lasts
 	for (i = 0; i < *current_sequence_length; i++)
 	{
 		_delay_ms(1000);
@@ -60,6 +64,7 @@ int getPlayerInputState(int sequence[2], int *current_sequence_length)
 	
 int resetGame(int *current_sequence_length)
 {
+	//Restart the game, setting the sequence lenght back to 1
 	*current_sequence_length = 1;
 	return 0;
 }
@@ -85,12 +90,14 @@ int getButtonPress()
 {
 	while (1)
 	{
+		//Read the current status of the input port
 		uint8_t port_b_state = ~PINB;
 		uint8_t port_b_validated;
 		int result = 9;
 
 		switch (port_b_state)
 		{
+			//For each button, input the correspondent value
 			case (1<<PB0):
 				_delay_ms(1000);
 				port_b_validated = ~PINB;
@@ -158,6 +165,7 @@ int getButtonPress()
 		}
 		if (result != 9)
 		{
+			//If a button is pressed, send the correspondent input to the system
 			port_b_state = ~PINB;
 			while (port_b_state != 0b00000000)
 			{
@@ -171,6 +179,7 @@ int getButtonPress()
 
 int showFailPattern()
 {
+	//Show a predefined fail pattern in case of wrong sequence
 	_delay_ms(2000);
 	PORTA = 0b00011000;
 	_delay_ms(2000);
@@ -189,6 +198,7 @@ int showFailPattern()
 
 int showWinPattern()
 {
+	//Show a predefined win pattern in case of correct sequence
 	PORTA = 0b01010101;
 	_delay_ms(2000);
 	PORTA = ~PORTA;
