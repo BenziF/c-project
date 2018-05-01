@@ -31,9 +31,9 @@ int main(void)
 		
 	// Set up array of int: sequence
 	//int sequence [8] = {6, 2, 7, 4, 4, 8, 1, 2};
-	int sequence [2] = {6, 2};
+	int sequence [5] = {6, 2, 7, 4, 4};
 	// Set up int: full sequence length
-	int sequence_length = sizeof(sequence);
+	int sequence_length = sizeof(sequence) / 2;
 	// Set up int: current sequence length
 	int current_sequence_length = 1;
 	// Setup int: gameRoundResult. 0 = correct, 1 = player incorrect
@@ -44,7 +44,9 @@ int main(void)
 	//Testing
 	runTests();
 	
-	
+	sequence_length = sizeof(sequence) / 2;
+	current_sequence_length = 1;
+	gameRoundResult = 0;
 
     while (1)
     {
