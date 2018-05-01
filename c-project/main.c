@@ -2,7 +2,7 @@
  * c-project.c
  */ 
 
-# define F_CPU 1000000UL
+#define F_CPU 1000000UL
 
 #include <avr/io.h>
 #include <stdio.h>
@@ -37,6 +37,8 @@ int main(void)
 	int current_sequence_length = 1;
 	// Setup int: gameRoundResult. 0 = correct, 1 = player incorrect
 	int gameRoundResult = 0;
+	
+	test_CompareSequences();
 
     while (1)
     {
