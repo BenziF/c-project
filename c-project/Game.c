@@ -11,8 +11,6 @@ int handleResultOfRound(int gameRoundResult, int sequence_length, int *current_s
 		showWinPattern();
 		// Check if game is finished
 		*current_sequence_length = *current_sequence_length + 1;
-		printf("The current sequence length %d\n", *current_sequence_length);
-		printf("The sequence length %d\n", sequence_length);
 		if ((sequence_length + 1) == *current_sequence_length)
 		{
 			showWinForever();
@@ -53,8 +51,8 @@ int getPlayerInputState(int sequence[5], int *current_sequence_length)
 	{
 		_delay_ms(1000);
 		buttonPressed = getButtonPress();
-		// Compare each pres to current sequence value
-		// If incorrect
+		// Compare each button pressed to the current sequence value
+		// If incorrect, set flag and stop
 		if (buttonPressed + 1 != sequence[i])
 		{
 			inputResult = 1;

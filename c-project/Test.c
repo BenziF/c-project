@@ -15,6 +15,7 @@ int tests_run = 0;
 
 static char * test_CompareSequences()
 {
+	//Testing if the current sequence length gets increased when the player inputs the correct sequence
 	int CurrentSequenceValueTest = 2;
 	int gameRoundResultTest = 0;
 	gameRoundResultTest = handleResultOfRound(gameRoundResultTest, 5, &CurrentSequenceValueTest);
@@ -25,6 +26,7 @@ static char * test_CompareSequences()
 
 static char * test_CompareSequencesFail()
 {
+	//Testing if the current sequence length gets reset to 1 when the player inputs the wrong sequence
 	int CurrentSequenceValueTest = 4;
 	int gameRoundResultTest = 1;
 	gameRoundResultTest = handleResultOfRound(gameRoundResultTest, 5, &CurrentSequenceValueTest);
@@ -35,6 +37,7 @@ static char * test_CompareSequencesFail()
 
 static char * test_Reset()
 {
+	//Testing if the current sequence length gets reset to 1 when the reset function is called
 	int CurrentSequenceValueTest = 3;
 	resetGame( &CurrentSequenceValueTest);
 	mu_assert("resetGame(3) != 1",  CurrentSequenceValueTest == 1);
@@ -53,9 +56,6 @@ static char * all_tests()
 //#ifdef TEST
 int runTests()
 {
-	//init_stdio(0, 10000000L);
-	//sei();
-
 	char *result = all_tests();
 	if (result != 0) {
 		printf("error: %s\n", result);
