@@ -22,6 +22,7 @@ static char * test_CompareSequences()
 	return 0;
 }
 
+
 static char * test_CompareSequencesFail()
 {
 	int CurrentSequenceValueTest = 4;
@@ -31,10 +32,20 @@ static char * test_CompareSequencesFail()
 	return 0;
 }
 
+
+static char * test_Reset()
+{
+	int CurrentSequenceValueTest = 3;
+	resetGame( &CurrentSequenceValueTest);
+	mu_assert("resetGame(3) != 1",  CurrentSequenceValueTest == 1);
+	return 0;
+}
+
 static char * all_tests()
 {
 	mu_run_test(test_CompareSequences);
 	mu_run_test(test_CompareSequencesFail);
+	mu_run_test(test_Reset);
 	return 0;
 }
 
