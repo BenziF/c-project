@@ -29,11 +29,11 @@ static char * all_tests()
 }
 
 
-#ifdef TEST
-int main()
+//#ifdef TEST
+int runTests()
 {
-	init_stdio(0, 10000000L);
-	sei();
+	//init_stdio(0, 10000000L);
+	//sei();
 
 	char *result = all_tests();
 	if (result != 0) {
@@ -48,4 +48,4 @@ int main()
 	while(1);
 	return result != 0;
 }
-#endif
+//#endif

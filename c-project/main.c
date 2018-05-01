@@ -12,6 +12,7 @@
 #include "atmega2560_drivers.h"
 #include "minunit.h"
 #include "IGame.h"
+#include "Test.h"
 
 
 int main(void)
@@ -38,7 +39,12 @@ int main(void)
 	// Setup int: gameRoundResult. 0 = correct, 1 = player incorrect
 	int gameRoundResult = 0;
 	
-	test_CompareSequences();
+	
+	
+	//Testing
+	runTests();
+	
+	
 
     while (1)
     {
